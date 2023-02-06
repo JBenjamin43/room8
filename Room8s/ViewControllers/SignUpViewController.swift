@@ -12,7 +12,6 @@ import Firebase
 
 class SignUpPageViewController : UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,7 +19,6 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLable: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +28,9 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         
-        
         setUpElements()
     }
+    
     // hides the error label
     func setUpElements() {
         errorLable.alpha = 0
@@ -43,7 +41,6 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
     }
     
     func validateFields() -> String? {
-        
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -60,7 +57,6 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
         }
         
         return nil
-        
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -79,9 +75,9 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // creates user
-            Auth.auth().createUser(withEmail: email, password: password){ (result, err) in
+            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
-                //check for  errors
+                //check for errors
                 if err != nil {
                     
                     // there was an error creating users
@@ -91,7 +87,7 @@ class SignUpPageViewController : UIViewController, UITextFieldDelegate {
                     // user was created save first and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstName":firstName, "lastName":lastName,"uid":result!.user.uid]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["firstName":firstName, "lastName":lastName,"uid":result!.user.uid]) { (error) in
                         
                         if error != nil {
                             // show error message

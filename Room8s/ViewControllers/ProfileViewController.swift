@@ -12,80 +12,70 @@ private let reuseIdentifier = "Cell"
 
 
 
-class CollectionViewController: UICollectionViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+class ProfileViewController: UIViewController {
     
-        // Configure the cell
+    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var firstNameProfileLabel: UILabel!
+    @IBOutlet weak var lastNameProfileLabel: UILabel!
+    @IBOutlet weak var emailProfileLabel: UILabel!
+    @IBOutlet weak var cityProfileLabel: UILabel!
+    @IBOutlet weak var stateProfileLabel: UILabel!
+    @IBOutlet weak var phoneNumberProfileLabel: UILabel!
+    @IBOutlet weak var genderProfileLabel: UILabel!
+    @IBOutlet weak var ageProfileLabel: UILabel!
+    @IBOutlet weak var bioProfileLabel: UILabel!
+    @IBAction func signOutButton(_ sender: Any) {
+        logout()
+    }
     
-        return cell
+    @IBAction func editProfilebutton(_ sender: Any) {
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        selfUserData()
     }
-    */
-
+    
+    private func selfUserData() {
+        // gets the current id of the user that is signed in
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+        print("userId: \(userId)")
+        
+        let db = Firestore.firestore()
+        //read the documents at a specific path
+        db.collection("users").document(userId).getDocument { snapshot, error in
+            // check for errors
+            if error == nil {
+                //no errors
+                if let d = snapshot {
+                    // update the list property in the main thread
+                    DispatchQueue.main.async {
+                        self.firstNameProfileLabel.text = d["firstName"] as? String ?? ""
+                        self.lastNameProfileLabel.text = d["lastName"] as? String ?? ""
+                        self.emailProfileLabel.text = d["email"] as? String ?? ""
+                        self.cityProfileLabel.text = d["city"] as? String ?? ""
+                        self.stateProfileLabel.text = d["state"] as? String ?? ""
+                        self.phoneNumberProfileLabel.text = d["phoneNumber"] as? String ?? ""
+                        self.genderProfileLabel.text = d["gender"] as? String ?? ""
+                        self.ageProfileLabel.text = d["age"] as? String ?? ""
+                        self.bioProfileLabel.text = d["bio"] as? String ?? ""
+                    }
+                }
+            }
+        }
+    }
+    
+    private func logout() {
+        do {
+            try Auth.auth().signOut()
+            // Navigate to the login screen
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let LoginNavController = storyboard.instantiateViewController(withIdentifier: "LoginNavController")
+            self.present(LoginNavController, animated: true, completion: nil)
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 }

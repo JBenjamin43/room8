@@ -15,9 +15,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabelLogin: UILabel!
-    
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,9 +33,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         print(textField.text)
-        
-        
     }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         // TODO VALIDATE TEXT FIELDS
@@ -64,7 +61,6 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
 }
         
  

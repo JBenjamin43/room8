@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Roomies {
+struct Roomie {
+    var id: String
     var firstName: String
     var lastName: String
     var email: String
@@ -17,4 +18,13 @@ struct Roomies {
     var gender: String
     var age : String
     var bio : String
+}
+struct Interaction {
+    var roomieID : String
+    var interactionType : Int
+}
+
+struct Matche {
+    var roomieID : String
+    var interactionType : Int
 }
