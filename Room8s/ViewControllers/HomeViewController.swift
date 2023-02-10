@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 
 protocol HomeViewControllerDataSource: NSObject  {
-    func handleSkipButtonPress(currentUserID: String)
+    func handleSkipButtonPress(currentUserID: String, senderUserID: String)
     func handleLikeButtonPress(currentUserID: String, senderUserID: String)
 }
 
@@ -32,10 +32,15 @@ class HomeViewController: UIViewController,
         
         homeViewCollectionView.delegate = self
         homeViewCollectionView.dataSource = self
-        interationObservable()
-        
+        interactionObservable()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchData()
     }
+    
+    // MARK: Private
     
     private func fetchData() {
         guard let userId = Auth.auth().currentUser?.uid else {return}
@@ -80,7 +85,7 @@ class HomeViewController: UIViewController,
         }
     }
         
-    private func interationObservable() {
+    private func interactionObservable() {
         guard let userId = Auth.auth().currentUser?.uid else {return}
         let db = Firestore.firestore()
         db.collection("users").document(userId).collection("interactions").addSnapshotListener { (snapshot, error) in
@@ -120,11 +125,13 @@ class HomeViewController: UIViewController,
         self.homeViewCollectionView.reloadData()
     }
     
-    func handleSkipButtonPress(currentUserID: String) {
+    // MARK: HomeViewControllerDataSource
+    
+    func handleSkipButtonPress(currentUserID: String, senderUserID: String) {
         // when we skip we need to update the user's interaction collection
         // updates as -> ["key_id_of_interacted_user": "0"]
         let db = Firestore.firestore()
-        db.collection("users").document(currentUserID).collection("interactions").addDocument(data: [currentUserID : 0]) { (error) in
+        db.collection("users").document(currentUserID).collection("interactions").addDocument(data: [senderUserID : 0]) { (error) in
             if let error = error {
                 print("Error adding document: \(error)")
             } else {
@@ -146,7 +153,7 @@ class HomeViewController: UIViewController,
             }
         }
         
-        db.collection("users").document(senderUserID).collection("matches").addDocument(data: [senderUserID : 1]) { (error) in
+        db.collection("users").document(senderUserID).collection("matches").addDocument(data: [currentUserID : 1]) { (error) in
             if let error = error {
                 print("Error adding document: \(error)")
             } else {
@@ -181,21 +188,22 @@ class HomeViewController: UIViewController,
         
         return cell
     }
-    
-    // to make sure your user doesnt show up in your profile view of users
-    func doNotDisplayUser() {
-        
-        
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showUserProfile" {
+            let detailVC = segue.destination as! ProfileDetailViewController
+            detailVC.roomie = sender as? Roomie
+        }
     }
     
     // MARK: UICollectionViewDelegate.
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showUserProfile",
+                     sender: roomies[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width , height: self.view.frame.height / 2)
     }
-    
 }

@@ -24,7 +24,7 @@ struct Interaction {
     var interactionType : Int
 }
 
-struct Matche {
+struct Match {
     var roomieID : String
     var interactionType : Int
 }

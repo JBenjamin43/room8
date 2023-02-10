@@ -16,11 +16,7 @@ class Utilities{
         return passswordTest.evaluate(with: password)
     }
     
-//    static func removeItem(array: inout[int], item:Int) -> [Int] {
-//        if let index = array
-//    }
-    
-//static func addMatch(array: inout [Int], item :Int) -> [Int]
+
     
     
 }

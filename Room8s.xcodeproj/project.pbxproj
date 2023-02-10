@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2728D7EB29820C8700BB330C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2728D7EA29820C8700BB330C /* ProfileViewController.swift */; };
 		2728D8162988436B00BB330C /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2728D8152988436B00BB330C /* HomeCollectionViewCell.swift */; };
+		2741CFD129960B8B000307FF /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2741CFD029960B8B000307FF /* ProfileDetailViewController.swift */; };
 		276EBBE129776D3300634E8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 276EBBE029776D3300634E8E /* GoogleService-Info.plist */; };
 		27A5505429785D490062A6BD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 27A5505329785D490062A6BD /* FirebaseAuth */; };
 		27A5505629785D490062A6BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 27A5505529785D490062A6BD /* FirebaseFirestore */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		2728D7EA29820C8700BB330C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2728D8152988436B00BB330C /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2741CFD029960B8B000307FF /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		276EBBE029776D3300634E8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27A5505929789A9C0062A6BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		27A5505C2978A65C0062A6BD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				2728D7EA29820C8700BB330C /* ProfileViewController.swift */,
 				27AAE493298B09E20051CD3C /* MatchesViewController.swift */,
 				27AAE491298B09BC0051CD3C /* EditProfileViewController.swift */,
+				2741CFD029960B8B000307FF /* ProfileDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				27BA421229766DCA007906C5 /* LoginPageViewController.swift in Sources */,
 				2728D8162988436B00BB330C /* HomeCollectionViewCell.swift in Sources */,
 				27A5505D2978A65C0062A6BD /* Utilities.swift in Sources */,
+				2741CFD129960B8B000307FF /* ProfileDetailViewController.swift in Sources */,
 				27A5505A29789A9C0062A6BD /* HomeViewController.swift in Sources */,
 				27BA41F92976516C007906C5 /* SceneDelegate.swift in Sources */,
 				27D9D0D329809A6E0001109D /* Constants.swift in Sources */,

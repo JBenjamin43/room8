@@ -9,10 +9,21 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseStorage
 
-class EditProfileViewController: UIViewController,UITextFieldDelegate {
+
+class EditProfileViewController: UIViewController, UITextFieldDelegate {
     
+    public weak var delegate: ProfileViewControllerDataSource?
     
+    @IBAction func addImageEditButton(_ sender: Any) {
+        let addImageViewController = UIImagePickerController()
+        addImageViewController.sourceType = .photoLibrary
+        addImageViewController.delegate = self
+        addImageViewController.allowsEditing = true
+        present(addImageViewController, animated: true)
+    }
+    @IBOutlet weak var profileEditImage: UIImageView!
     @IBOutlet weak var firstNameEditTextField: UITextField!
     @IBOutlet weak var lastNameEditTextField: UITextField!
     @IBOutlet weak var emailEditTextField: UITextField!
@@ -37,6 +48,8 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
         genderEditTextField.delegate = self
         ageEditTextField.delegate = self
         bioEditTextField.delegate = self
+        
+        self.profileEditImage.image = UIImage(systemName: "plus.app.fill")
         
         setUpElements()
     }
@@ -98,13 +111,38 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
             } else {
                 print("Successfully updated")
                 self.dismiss(animated: true, completion: nil)
+                self.uploadProfileImage()
             }
         }
     }
     
-    func showError(_ message:String) {
+    private func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    
+    private func uploadProfileImage() {
+        // we get the current user id
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        //path way to the photo
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        
+        //compresses the data
+        guard let compressedData = self.profileEditImage.image?.jpegData(compressionQuality: 0.9) else {
+            return
+        }
+        
+        storageRef.putData(compressedData) { metadata, error in
+            if error != nil {
+                // there was an error
+            } else {
+                // success
+                self.delegate?.fetchCurrentUserData()
+                print("We uploaded an image successfully 🏌🏿‍♂️🥂")
+            }
+        }
     }
     
     @IBAction func doneEditButton(_ sender: Any) {
@@ -141,3 +179,19 @@ class EditProfileViewController: UIViewController,UITextFieldDelegate {
     }
 }
 
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage{
+            profileEditImage.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}

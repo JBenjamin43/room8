@@ -1,24 +1,17 @@
 //
-//  CollectionViewController.swift
+//  ProfileDetailViewController.swift
 //  Room8s
 //
-//  Created by Jeremiah on 1/25/23.
+//  Created by Jeremiah on 2/9/23.
 //
 
+import Foundation
 import UIKit
 import Firebase
 import FirebaseStorage
 
-private let reuseIdentifier = "Cell"
-
-protocol ProfileViewControllerDataSource: AnyObject {
-    func fetchCurrentUserData()
-}
-
-class ProfileViewController: UIViewController, ProfileViewControllerDataSource {
-    
-    private let profileImageUrlConstant = "gs://room8-dee6c.appspot.com/user/"
-    
+class ProfileDetailViewController: UIViewController {
+        
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var firstNameProfileLabel: UILabel!
     @IBOutlet weak var lastNameProfileLabel: UILabel!
@@ -29,13 +22,8 @@ class ProfileViewController: UIViewController, ProfileViewControllerDataSource {
     @IBOutlet weak var genderProfileLabel: UILabel!
     @IBOutlet weak var ageProfileLabel: UILabel!
     @IBOutlet weak var bioProfileLabel: UILabel!
-    @IBAction func signOutButton(_ sender: Any) {
-        logout()
-    }
     
-    @IBAction func editProfilebutton(_ sender: Any) {
-        self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
-    }
+    var roomie: Roomie? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,20 +31,19 @@ class ProfileViewController: UIViewController, ProfileViewControllerDataSource {
     }
     
     func fetchCurrentUserData() {
-        // gets the current id of the user that is signed in
-        guard let userId = Auth.auth().currentUser?.uid else {return}
-        print("userId: \(userId)")
-        
+        guard let roomieID = roomie?.id else {
+            return
+        }
         let db = Firestore.firestore()
         //read the documents at a specific path
-        db.collection("users").document(userId).getDocument { snapshot, error in
+        db.collection("users").document(roomieID).getDocument { snapshot, error in
             // check for errors
             if error == nil {
                 //no errors
                 if let d = snapshot {
                     // update the list property in the main thread
                     DispatchQueue.main.async {
-                        self.firstNameProfileLabel.text = d["firstName"] as? String ?? ""
+                        self.firstNameProfileLabel.text = d["firstName"] as? String ?? "bo"
                         self.lastNameProfileLabel.text = d["lastName"] as? String ?? ""
                         self.emailProfileLabel.text = d["email"] as? String ?? ""
                         self.cityProfileLabel.text = d["city"] as? String ?? ""
@@ -68,15 +55,17 @@ class ProfileViewController: UIViewController, ProfileViewControllerDataSource {
                         self.fetchImage()
                     }
                 }
+            } else {
+                print("there was an error: \(error.debugDescription)")
             }
         }
     }
     
     private func fetchImage() {
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard let roomieID = roomie?.id else {
             return
         }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        let storageRef = Storage.storage().reference().child("user/\(roomieID)")
         storageRef.downloadURL { url, error in
             if let url = url, error == nil {
                 print("Successfully worked.")
@@ -97,27 +86,5 @@ class ProfileViewController: UIViewController, ProfileViewControllerDataSource {
         }
 
     }
-    
-    private func logout() {
-        do {
-            try Auth.auth().signOut()
-            // Navigate to the login screen
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let LoginNavController = storyboard.instantiateViewController(withIdentifier: "LoginNavController")
-            self.present(LoginNavController, animated: true, completion: nil)
-            
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editProfileSegue" {
-            let editVC = segue.destination as! EditProfileViewController
-            editVC.delegate = self
-        }
-    }
 }
 
-    
