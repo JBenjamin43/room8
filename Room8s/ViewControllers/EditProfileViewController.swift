@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseStorage
+import GeoFire
+import GooglePlaces
 
 
 class EditProfileViewController: UIViewController, UITextFieldDelegate {
@@ -50,6 +52,12 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         bioEditTextField.delegate = self
         
         self.profileEditImage.image = UIImage(systemName: "plus.app.fill")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        cityEditTextField.addGestureRecognizer(tapGesture)
+
+
+
         
         setUpElements()
     }
@@ -177,8 +185,36 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
                            bio: bio)
         }
     }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        print("hello world")
+        let autoCompleteViewController = GMSAutocompleteViewController()
+        autoCompleteViewController.delegate = self
+        present(autoCompleteViewController, animated: true, completion: nil)
+
+    }
+    
+    
+    
 }
 
+extension EditProfileViewController:GMSAutocompleteViewControllerDelegate {
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        print(place.name)
+        viewController.dismiss(animated: true)
+        cityEditTextField.text = place.name
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        
+    }
+    
+    
+}
 
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

@@ -33,6 +33,8 @@ class HomeViewController: UIViewController,
         homeViewCollectionView.delegate = self
         homeViewCollectionView.dataSource = self
         interactionObservable()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

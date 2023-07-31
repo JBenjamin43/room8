@@ -24,7 +24,15 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        let backgroundImage = UIImage(named: "background")
+            let backgroundImageView = UIImageView(image: backgroundImage)
+            backgroundImageView.frame = view.bounds
+            backgroundImageView.contentMode = .scaleAspectFill
+            view.addSubview(backgroundImageView)
+            view.sendSubviewToBack(backgroundImageView)
+        
     }
+    
     
     func setUpElements() {
         //hides the error label
@@ -61,6 +69,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    
 }
         
  

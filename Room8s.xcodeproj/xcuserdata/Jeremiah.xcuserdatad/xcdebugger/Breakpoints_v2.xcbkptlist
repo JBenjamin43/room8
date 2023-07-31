@@ -122,8 +122,8 @@
             filePath = "Room8s/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "application(_:configurationForConnecting:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,8 +138,8 @@
             filePath = "Room8s/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "application(_:didDiscardSceneSessions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,8 +170,8 @@
             filePath = "Room8s/ViewControllers/EditProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "doneEditButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,8 +186,8 @@
             filePath = "Room8s/ViewControllers/EditProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,8 +202,8 @@
             filePath = "Room8s/ViewControllers/EditProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "uploadProfileImage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -212,7 +212,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DA2F53C0-6447-41E5-9CB8-BCCAC87B18D0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Room8s/ViewControllers/ProfileDetailViewController.swift"
@@ -224,14 +224,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "DA2F53C0-6447-41E5-9CB8-BCCAC87B18D0 - 35fda5dd2f2f725d"
+                  uuid = "DA2F53C0-6447-41E5-9CB8-BCCAC87B18D0 - f6c7c72341232723"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Room8s.ProfileDetailViewController.fetchCurrentUserData() -&gt; ()"
                   moduleName = "Room8s"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeremiah/Documents/Room8s/Room8s/ViewControllers/ProfileDetailViewController.swift"
+                  urlString = "file:///Users/Jeremiah/Documents/Room8/Room8s/ViewControllers/ProfileDetailViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -239,14 +239,14 @@
                   offsetFromSymbolStart = "305">
                </Location>
                <Location
-                  uuid = "DA2F53C0-6447-41E5-9CB8-BCCAC87B18D0 - 35fda5dd2f2f725d"
+                  uuid = "DA2F53C0-6447-41E5-9CB8-BCCAC87B18D0 - f6c7c72341232723"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Room8s.ProfileDetailViewController.fetchCurrentUserData() -&gt; ()"
                   moduleName = "Room8s"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeremiah/Documents/Room8s/Room8s/ViewControllers/ProfileDetailViewController.swift"
+                  urlString = "file:///Users/Jeremiah/Documents/Room8/Room8s/ViewControllers/ProfileDetailViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -260,7 +260,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9CB6AA66-0CC3-440E-A4E0-CCEBB24D807A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Room8s/ViewControllers/ProfileDetailViewController.swift"
@@ -276,7 +276,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B783AE6E-D946-4323-9942-0EFD867E528D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Room8s/ViewControllers/ProfileDetailViewController.swift"
@@ -292,7 +292,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6D3726A5-F147-4594-806A-FF8F7F09AD53"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Room8s/ViewControllers/ProfileDetailViewController.swift"
@@ -304,14 +304,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "6D3726A5-F147-4594-806A-FF8F7F09AD53 - 45994b415374a64c"
+                  uuid = "6D3726A5-F147-4594-806A-FF8F7F09AD53 - 86a329bf3d78fd0a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Room8s.ProfileDetailViewController.fetchCurrentUserData() -&gt; ()"
                   moduleName = "Room8s"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeremiah/Documents/Room8s/Room8s/ViewControllers/ProfileDetailViewController.swift"
+                  urlString = "file:///Users/Jeremiah/Documents/Room8/Room8s/ViewControllers/ProfileDetailViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -319,14 +319,14 @@
                   offsetFromSymbolStart = "380">
                </Location>
                <Location
-                  uuid = "6D3726A5-F147-4594-806A-FF8F7F09AD53 - 35fda5dd2f2f7d9f"
+                  uuid = "6D3726A5-F147-4594-806A-FF8F7F09AD53 - f6c7c7234123275d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Room8s.ProfileDetailViewController.fetchCurrentUserData() -&gt; ()"
                   moduleName = "Room8s"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Jeremiah/Documents/Room8s/Room8s/ViewControllers/ProfileDetailViewController.swift"
+                  urlString = "file:///Users/Jeremiah/Documents/Room8/Room8s/ViewControllers/ProfileDetailViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
@@ -340,7 +340,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1B792432-8A53-4A95-84A9-7B74ED3C4A7D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Room8s/ViewControllers/ProfileDetailViewController.swift"

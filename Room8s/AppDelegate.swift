@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  Room8s
 //
@@ -9,14 +9,19 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import GooglePlaces
+
+
 // ...
       
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+// need to insert the messagingDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.\
+        GMSPlacesClient.provideAPIKey("AIzaSyAZ96qnIyzUiN5dXXNnNrEgvm0TAEEDkTg")
+        
         FirebaseApp.configure()
         let auth = Auth.auth()
         let window = UIWindow(frame: UIScreen.main.bounds)
