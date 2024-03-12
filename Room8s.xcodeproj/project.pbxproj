@@ -36,6 +36,7 @@
 		27BA421029766C5E007906C5 /* LSNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA420F29766C5E007906C5 /* LSNavViewController.swift */; };
 		27BA421229766DCA007906C5 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA421129766DCA007906C5 /* LoginPageViewController.swift */; };
 		27D9D0D329809A6E0001109D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9D0D229809A6E0001109D /* Constants.swift */; };
+		27F490AE2AF62798004160CF /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F490AD2AF62798004160CF /* ConversationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		27BA420F29766C5E007906C5 /* LSNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSNavViewController.swift; sourceTree = "<group>"; };
 		27BA421129766DCA007906C5 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		27D9D0D229809A6E0001109D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		27F490AD2AF62798004160CF /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				27AAE493298B09E20051CD3C /* MatchesViewController.swift */,
 				27AAE491298B09BC0051CD3C /* EditProfileViewController.swift */,
 				2741CFD029960B8B000307FF /* ProfileDetailViewController.swift */,
+				27F490AD2AF62798004160CF /* ConversationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				27BA421229766DCA007906C5 /* LoginPageViewController.swift in Sources */,
 				2728D8162988436B00BB330C /* HomeCollectionViewCell.swift in Sources */,
 				27A5505D2978A65C0062A6BD /* Utilities.swift in Sources */,
+				27F490AE2AF62798004160CF /* ConversationViewController.swift in Sources */,
 				2741CFD129960B8B000307FF /* ProfileDetailViewController.swift in Sources */,
 				27A5505A29789A9C0062A6BD /* HomeViewController.swift in Sources */,
 				27BA41F92976516C007906C5 /* SceneDelegate.swift in Sources */,
