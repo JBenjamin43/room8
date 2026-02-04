@@ -10,14 +10,17 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 import GooglePlaces
+import GoogleSignIn
 
 
 // ...
       
-@main
+//@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 // need to insert the messagingDelegate
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.\
         GMSPlacesClient.provideAPIKey("AIzaSyAZ96qnIyzUiN5dXXNnNrEgvm0TAEEDkTg")
@@ -44,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
         
     }
-
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
